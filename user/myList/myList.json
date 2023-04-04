@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {},
+  "navigationBarTitleText": "我的接单",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle":"black"
+}

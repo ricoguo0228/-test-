@@ -1,0 +1,43 @@
+/* miniprogram/pages/user/myPublish/reviseContent/reviseContent.wxss */
+.taskTitle{
+  display: flex;
+  font-size: 32rpx;
+  margin: 40rpx;
+  font-weight: bold;
+}
+.taskTitle input{
+  font-weight: normal;
+  border-bottom: 1rpx solid gray;
+}
+
+.taskContent{
+  font-size: 32rpx;
+  margin: 40rpx;
+  font-weight: bold;
+}
+.taskContent textarea{
+  font-weight: normal;
+  border: 1rpx solid gray;
+}
+
+.taskVx{
+  display: flex;
+  font-size: 32rpx;
+  margin: 40rpx;
+  font-weight: bold;
+}
+.taskVx input{
+  font-weight: normal;
+  border-bottom: 1rpx solid gray;
+}
+
+.button{
+  margin-top: 50rpx;
+}
+.button button{
+  background-color: #00FF7F;
+  width: 250rpx;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}

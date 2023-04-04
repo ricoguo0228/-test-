@@ -1,0 +1,93 @@
+.titleUp{
+  margin-left: 20rpx;
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+
+.titleUp image{
+  margin-top: 13rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.from{
+  display: flex;
+  padding: 20rpx;
+  border-top: solid rgba(0, 0, 0, 0.2) 1px;
+}
+.from .headImg{
+  margin-top: 20rpx;
+  display: flex;
+}
+.from .headImg image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.from .headImg .fire image{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 60rpx;
+  left: -25rpx;
+}
+.from .taskTitle{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  width: 220rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.from .taskLabel{
+  font-size: 20rpx;
+  margin-top: 10rpx;
+  color: #FF7744;
+  border: solid #FF7744 1px;
+  border-radius: 10rpx;
+  text-align: center;
+  width: 100rpx;
+  margin-left: 20rpx;
+}
+.from .taskId{
+  margin-left: 20rpx;
+  margin-top: 7rpx;
+  font-size: 20rpx;
+  margin-top: 8rpx;
+  color: gray;
+}
+
+.button .list{
+  display: flex;
+}
+
+.button .list .item_{
+  background-color: #46ff4ff1;
+  border-radius: 10rpx;
+  height: 60rpx;
+  width: 260rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 10rpx;
+  margin-left: 80rpx;
+}
+
+.button .list .item_1{
+  background-color: #838383f1;
+  border-radius: 10rpx;
+  height: 60rpx;
+  width: 260rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 10rpx;
+  margin-left: 80rpx;
+}

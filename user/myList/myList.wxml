@@ -1,0 +1,40 @@
+<view wx:for="{{sum}}" class="from" data-index="{{index}}" wx:if="{{arr[index].acceptUserOpenid==openId && arr[index].acceptUserOpenid!=''}}">
+  <!--获取循环项中的索引index（数组中第index个的数据）-->
+  <view class="headImg">
+    <!--头像-->
+    <image src="{{arr[index].headImg}}"></image>
+  </view>
+  <view>
+    <view class="taskTitle">
+      {{arr[index].taskTitle}}
+    </view>
+    <view class="taskLabel">
+      {{arr[index].taskLabel}}
+    </view>
+    <view class="taskId">
+      订单日期：{{arr[index].taskId}}
+    </view>
+  </view>
+
+  <view class="button">
+
+    <view class="list">
+      <view class="item_"  wx:if="{{arr[index].state}}">
+        甲方已确认完成
+      </view>
+      <view class="item_1" wx:if="{{!arr[index].state}}">
+        甲方未确认完成
+      </view>
+    </view>
+
+    <view class="list">
+      <view class="item_"  wx:if="{{!arr[index].state}}" bindtap="overTask" data-index="{{index}}">
+        放弃当前任务
+      </view>
+      <view class="item_1" wx:if="{{arr[index].state}}">
+        放弃当前任务
+      </view>
+    </view>
+
+  </view>
+</view>
