@@ -1,0 +1,119 @@
+<view class="title"><!-- 标题轮播图等 -->
+  <swiper indicator-dots='true' autoplay='true' interval='3000' duration='1000' circular='true' class="swip">
+    <block wx:for="{{movies}}" wx:for-index="index">
+      <swiper-item>
+        <image src='{{item.url}}' mode='widthFix'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 任务图标等 -->
+<view class="list">
+  <!-- 快递代领 -->
+  <navigator url="../task/task"><view class="it">
+    <image src="../../images2/应用图标/快递.png"></image>
+    <view class="text">快递代领</view>
+    <view class="down"><image src="../../images/sort/dwon.png"></image></view>
+  </view></navigator>
+  <!-- 驾照咨询 -->
+  <navigator url="../license/license"><view class="it">
+    <image src="../../images2/应用图标/信息咨询.png"></image>
+    <view class="text">驾校咨询</view>
+    <view class="down"><image src="../../images/sort/dwon.png"></image></view>
+  </view></navigator>
+  <!-- 二手交易 -->
+  <navigator url="../task/task"><view class="it">
+    <image src="../../images2/应用图标/二手交易.png"></image>
+    <view class="text">二手交易</view>
+    <view class="down"><image src="../../images/sort/dwon.png"></image></view>
+  </view></navigator>
+  <!-- 学习交流 -->
+  <navigator url="../dating/dating"><view class="it">
+    <image src="../../images2/应用图标/教材.png"></image>
+    <view class="text">学习交流</view>
+    <view class="down"><image src="../../images/sort/dwon.png"></image></view>
+  </view></navigator>
+</view>
+
+<!-- 留言区 -->
+<view class="content">
+  <!-- 头像、名称、时间 GO -->
+  <view class="it">
+    <view class="head"><!-- 头像 -->
+    <image src="../../images2/底部图标/个人.png"></image>
+    </view>
+    <view class="text"><!-- 名称+类型 -->
+      <view class="name">管理员</view>
+      <view class="div">注意事项</view>
+    </view>
+    <view class="time"><!--时间 -->
+      2023/3/12 13:19
+    </view>
+  </view>
+  <!-- 头像、名称、时间Over -->
+
+  <!-- 内容Go -->
+  <view class="content-text">
+    测试版本上线：1.0.0.000001_beta
+    <view style="text-align: center;color: red;">—充值与提现皆为虚假金额，与真实财产并无瓜葛—</view>
+    <view style="text-align: center;color: red;">—测试结束清除所有用户资料，版本为测试版本—</view>
+    <view style="text-align: center;color: red;">—发现任何BUG请及时联系管理员—</view>
+  </view>
+  <!-- 内容Over -->
+  <view class="divLine"></view><!--水平线-->
+</view>
+
+<!-- 留言区 -->
+<view class="content">
+  <!-- 头像、名称、时间 GO -->
+  <view class="it">
+    <view class="head"><!-- 头像 -->
+    <image src="../../images2/底部图标/个人.png"></image>
+    </view>
+    <view class="text"><!-- 名称+类型 -->
+      <view class="name">管理员</view>
+      <view class="div">注意事项</view>
+    </view>
+    <view class="time"><!--时间 -->
+      2023/3/28 22:15
+    </view>
+  </view>
+  <!-- 头像、名称、时间Over -->
+
+  <!-- 内容Go -->
+  <view class="content-text">
+    社区暂时并不开通发布说说的功能，原因有以下几点。
+    <view>1.本社区还未有自动识别黄色、犯罪、血腥暴力等违规图片视频的功能，开通自由发布功能会导致许多不良视频和图片肆意传播。</view>
+    <view>2.考虑到学校用户人数，社区目前的存储容量吃不消大量的视频、图片、文字的上传，但是为了有点作用，驾校报名会正常开通，并且持续升级，感谢您的关注。</view>
+    <view>3.技术方面的支持实在太薄弱,组内成员都是初学者，敬请谅解。</view>
+  </view>
+  <!-- 内容Over -->
+  <view class="divLine"></view><!--水平线-->
+</view>
+
+<view class="content">
+  <!-- 头像、名称、时间 GO -->
+  <view class="it">
+    <view class="head"><!-- 头像 -->
+    <image src="../../images2/底部图标/个人.png"></image>
+    </view>
+    <view class="text"><!-- 名称+类型 -->
+      <view class="name">管理员</view>
+      <view class="div">使用帮助</view>
+    </view>
+    <view class="time"><!--时间 -->
+      2023/3/28 22:30
+    </view>
+  </view>
+  <!-- 头像、名称、时间Over -->
+
+  <!-- 内容Go -->
+  <view class="content-text">
+    <view>○.请各位接单与派单的同学，积极遵守法律与平台的规章制度，如若遇到欺诈、骗单等行为，请立即截图并且快速与客服联系。</view>
+    <view>○.核实正确之后，本站将及时扣除对方信誉与金额，并且对举报投诉者进行原有的补偿和信誉奖励！</view>
+    <view>○.如若出现恶意接单不完成、卡单，请及时联系客服，并且提交截图证据</view>
+    <view>○.唯一客服微信同开发者微信：zkn2791010579</view>
+  </view>
+  <!-- 内容Over -->
+  <view class="divLine"></view><!--水平线-->
+</view>
