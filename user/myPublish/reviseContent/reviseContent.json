@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {},
+  "navigationBarTitleText": "修改内容",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle":"black"
+}
