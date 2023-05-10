@@ -1,0 +1,71 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我的地址</view>
+</cu-custom>
+<view class="container">
+    <view class="content" wx:if="{{address.available.length>0}}">
+        <scroll-view class="scroll" scrollY="true">
+            <block wx:if="{{sid>0||erranderId>0}}">
+                <block wx:if="{{address.available.length>0}}">
+                    <view class="block-title">可选收货地址</view>
+                    <view class="wui-cell {{index>0?'border-1px-t':''}}" wx:for="{{address.available}}" wx:key="{{index}}">
+                        <view class="wui-cell-bd">
+                            <view bind:tap="handleUser" class="top" data-addres="{{item.addres}}" data-available="{{item.available}}" data-id="{{item.a_id}}" data-index="{{index}}" data-name="{{item.name}}">
+                                <view class="more_info justify-between">
+                                    <view class="name">{{item.name}}</view>
+                                    <view class="phone">{{item.phone}}</view>
+                                </view>
+                                <view class="addres">{{item.addres}}</view>
+                            </view>
+                            <view class="icon">
+                                <text bind:tap="onJsEvent" class="cuIcon-edit" data-event-type="jsUrl" data-url="/gc_school/pages/address/addressPost?id={{item.a_id}}" openType="navigate"></text>
+                                <text bindtap="del" class="cuIcon-delete" data-id="{{item.a_id}}"></text>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{address.dis_available.length>0}}">
+                    <view class="block-title">不在配送范围内或收货地址不完善</view>
+                    <view class="wui-cell {{index>0?'border-1px-t':''}}" wx:for="{{address.dis_available}}" wx:key="{{index}}">
+                        <view class="wui-cell-bd">
+                            <view bind:tap="onSelectAddress" data-available="{{item.available}}" data-id="{{item.id}}">
+                                <view class="address">{{item.address}}</view>
+                                <view class="more">
+                                    <view class="name">{{item.realname}}</view>
+                                    <view class="tel">{{item.mobile}}</view>
+                                </view>
+                            </view>
+                            <view bind:tap="onJsEvent" class="change" data-event-type="jsUrl" data-url="pages/address/addressPost?id={{item.id}}&channel={{channel}}&sid={{sid}}&erranderId={{erranderId}}&input={{input}}" openType="navigate">
+                                <view class="icon icon-post"></view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="wui-cell {{index>0?'border-1px-t':''}}" wx:for="{{address}}" wx:key="{{index}}">
+                    <view class="wui-cell-bd">
+                        <view>
+                            <view class="address">{{item.address}}</view>
+                            <view class="more">
+                                <view class="name">{{item.realname}}</view>
+                                <view class="tel">{{item.mobile}}</view>
+                            </view>
+                        </view>
+                        <navigator bind:tap="onJsEvent" class="change" data-event-type="jsUrl" data-url="/gc_school/pages/address/addressPost?id={{item.id}}" openType="navigate">
+                            <view class="icon icon-post"></view>
+                        </navigator>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="no-data" wx:else>
+        <image class="no-coupon" src="http://cos.lalawaimai.com/we7_wmall/wxapp/store_no_con.png"></image>
+        <text class="no-record">您还没有收货地址</text>
+    </view>
+    <view class="bottom-fixed border-1px-t" wx:if="{{islogin}}">
+        <button bind:tap="onJsEvent" class="bgm btn" data-event-type="jsUrl" data-url="/gc_school/pages/address/addressPost?id={{item.id}}&channel={{channel}}&sid={{sid}}&erranderId={{erranderId}}&input={{input}}">
+            添加地址
+        </button>
+    </view>
+</view>
