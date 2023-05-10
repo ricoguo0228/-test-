@@ -1,0 +1,55 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我买的</view>
+</cu-custom>
+<view class="trade_box">
+    <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+        <view bindtap="toDetail" class="trade2" data-id="{{good.id}}" data-status="{{good.status}}">
+            <image class="bookimage" mode="aspectFill" src="{{good.img[0]}}"></image>
+            <view class="second-left">
+                <view class="textdet">
+                    <view class="text-bookname">{{good.name}}</view>
+                </view>
+                <view class="price">￥{{good.price}}</view>
+            </view>
+        </view>
+        <view class="trade3">
+            <view class="margin-tb-sm-my text-center">
+                <view class="flex" wx:if="{{good.status==1}}">
+                    <view bindtap="refund" class="sm button refund" data-id="{{good.id}}" data-status="{{good.status}}">申请退款</view>
+                    <view bindtap="confirm" class="sm button" data-id="{{good.id}}" data-status="{{good.status}}">确认完成</view>
+                </view>
+                <view class="sm button" data-id="{{good.id}}" data-status="{{good.status}}" wx:if="{{good.status==2}}">已完成</view>
+                <view class="sm button refund" data-id="{{good.id}}" data-status="{{good.status}}" wx:if="{{good.status==3}}">退款中</view>
+                <view class="sm button" data-id="{{good.id}}" data-status="{{good.status}}" wx:if="{{good.status==4}}">退款完成</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nocontent" wx:if="{{dataList.length==0}}">
+    <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+    <view class="blank_text">暂无数据哦~</view>
+</view>
+<view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">
+  没有更多数据了~
+</view>
+<view class="toast-box" hidden="{{!ifName}}">
+    <view class="toastbg"></view>
+    <view class="showToast">
+        <view class="toast-title">
+            <text>退款理由</text>
+        </view>
+        <view class="toast-main">
+            <view class="toast-input">
+                <textarea bindinput="setValue" placeholder="请填写退款原因" value="{{reason}}"></textarea>
+            </view>
+        </view>
+        <view class="toast-button">
+            <view class="button1">
+                <view catchtap="cancel">取消</view>
+            </view>
+            <view class="button2">
+                <view catchtap="confirmRefund">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

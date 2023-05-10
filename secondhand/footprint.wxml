@@ -1,0 +1,18 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我的足迹</view>
+</cu-custom>
+<view class="box">
+    <view bindtap="toDetail" class="item" data-id="{{item.gid}}" wx:for="{{dataList}}">
+        <image mode="aspectFill" src="{{item.img[0]}}"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="price">￥{{item.price}}</view>
+        <view class="time">{{item.addtime}}</view>
+    </view>
+</view>
+<view class="nocontent" wx:if="{{dataList.length==0}}">
+    <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+    <view class="blank_text">暂无数据哦~</view>
+</view>
+<view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">
+  没有更多数据了~
+</view>

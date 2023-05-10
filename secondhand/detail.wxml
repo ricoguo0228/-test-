@@ -1,0 +1,97 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">详情</view>
+</cu-custom>
+<view>
+    <swiper autoplay="{{autoplay}}" class="picture" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{data.img}}" wx:key="*this">
+            <image bindtap="previewImage" class="slide-image" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="first clear">
+    <view class="left">
+        <view class="name">{{data.name}}</view>
+        <view class="price">￥{{data.price}}</view>
+        <text class="oldprice">￥{{data.oldprice}}</text>
+    </view>
+    <view class="right">
+        <button class="share" openType="share">
+            <image src="/images/share.png"></image>
+        </button>
+    </view>
+</view>
+<view class="pj_box">
+    <view class="detail_card detail_border ">
+        <view class="detail_title">发布日期</view>
+        <view class="detail_content">{{data.addtime}}</view>
+    </view>
+    <view class="detail_card detail_border ">
+        <view class="detail_title">新旧程度</view>
+        <view class="detail_content">{{data.degree}}</view>
+    </view>
+    <view class="detail_card detail_border ">
+        <view class="detail_title">详细描述</view>
+        <view class="detail_content_d">{{data.content}}</view>
+    </view>
+</view>
+<view class="comment_box">
+    <view class="name">全部留言</view>
+    <block wx:for="{{comment_list}}" wx:key="index">
+        <view class="comment_item_first">
+            <view class="top">
+                <image src="{{item.nickimg}}"></image>
+                <view class="nickname">{{item.nickname}}</view>
+                <text bindtap="del" class="cuIcon-delete" data-id="{{item.id}}" wx:if="{{data.user.u_id==item.uid}}"></text>
+            </view>
+            <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="-1">{{item.content}}</view>
+            <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="-1">{{item.time}}</view>
+        </view>
+        <view class="comment_item_child" wx:if="{{index1<1}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child">
+            <view class="top">
+                <image src="{{child.nickimg}}"></image>
+                <view class="nickname">{{child.nickname}}</view>
+                <text bindtap="del" class="cuIcon-delete" data-id="{{child.id}}" wx:if="{{data.user.u_id==child.uid}}"></text>
+            </view>
+            <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+            <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="{{index1}}">{{child.time}}</view>
+        </view>
+        <view class="comment_item_child" wx:if="{{index1>=1&&item.block==true}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child">
+            <view class="top">
+                <image src="{{child.nickimg}}"></image>
+                <view class="nickname">{{child.nickname}}</view>
+                <text bindtap="del" class="cuIcon-delete" data-id="{{child.id}}" wx:if="{{data.user.u_id==child.uid}}"></text>
+            </view>
+            <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+            <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="{{index1}}">{{child.time}}</view>
+        </view>
+        <view bindtap="showmore" class="more" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==false}}">展开<text class="cuIcon-unfold"></text>
+        </view>
+        <view bindtap="showmore" class="more" data-index="{{index}}" wx:elif="{{item.child.length>1&&item.block==true}}">收起<text class="cuIcon-fold"></text>
+        </view>
+        <view wx:else></view>
+    </block>
+    <view class="nocontent" wx:if="{{comment_list==0}}">
+        <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+        <view class="blank_text">暂无留言哦~</view>
+    </view>
+</view>
+<view class="comment_input" hidden="{{is_hide}}" style="bottom:{{bottom}}px">
+    <input adjustPosition="{{false}}" bindblur="inputBlur" bindfocus="inputFocus" bindinput="input" placeholder="{{placeholder}}" value="{{input}}"></input>
+    <view bindtap="submit" class="submit">发送</view>
+</view>
+<view class="bottom">
+    <view class="bottom_left">
+        <view bindtap="comment" class="t_card" data-groupindex="-1" data-index="-1">
+            <text class="cuIcon-message cuIcon"></text>
+            <text>留言</text>
+        </view>
+        <view bindtap="fav" class="t_card" data-id="{{data.id}}" data-type="1">
+            <text class="cuIcon-like cuIcon {{is_fav==true?'fav_active':''}}"></text>
+            <text>喜欢</text>
+        </view>
+    </view>
+    <view class="add-cart sub f16" wx:if="{{data.is_watch==true}}">
+        <view bindtap="makecall" class="add-cart-btn contact" data-phone="{{data.phone}}" disabled="{{selfflag}}">联系卖家</view>
+        <view bindtap="toBuy" class="add-cart-btn buy" data-phone="{{data.phone}}" disabled="{{selfflag}}" style="background:#FF6444;;">立即购买</view>
+    </view>
+</view>

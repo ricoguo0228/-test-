@@ -1,0 +1,43 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我的发布</view>
+</cu-custom>
+<view class="trade_box">
+    <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+        <view bindtap="toDetail" class="trade2" data-id="{{good.id}}" data-status="{{good.status}}">
+            <image class="bookimage" mode="aspectFill" src="{{good.img[0]}}"></image>
+            <view class="second-left">
+                <view class="textdet">
+                    <view class="text-bookname">{{good.name}}</view>
+                </view>
+                <view class="price">￥{{good.price}}</view>
+                <view class="count">
+                    <p>喜欢{{good.fav_count}}</p>
+                </view>
+            </view>
+        </view>
+        <view class="trade3">
+            <view class="margin-tb-sm-my text-center">
+                <view class="sm button">{{good.status}}</view>
+            </view>
+            <block wx:if="{{good.stock>0}}">
+                <view bindtap="edit" class="margin-tb-sm-my text-center" data-id="{{good.id}}">
+                    <view class="sm button">编辑</view>
+                </view>
+                <view class="margin-tb-sm-my text-center">
+                    <view bindtap="delorder" class="sm button bg-orange" data-id="{{good.id}}" wx:if="{{good.is_sale==1}}">下架</view>
+                    <view bindtap="delorder" class="sm button bg-orange" data-id="{{good.id}}" wx:else>上架</view>
+                </view>
+            </block>
+            <view class="margin-tb-sm-my text-center" wx:else>
+                <view class="sm button bg-orange">已售完</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nocontent" wx:if="{{dataList.length==0}}">
+    <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+    <view class="blank_text">暂无数据哦~</view>
+</view>
+<view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">
+  没有更多数据了~
+</view>

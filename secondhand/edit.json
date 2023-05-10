@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "addImage": "/colorui/components/upload/upload",
+        "cu-custom": "/colorui/components/cu-custom"
+    },
+    "navigationBarTitleText": "编辑信息"
+}

@@ -1,0 +1,106 @@
+page {
+    background-color: #fff;
+}
+
+.bgmain {
+    background-color: transparent;
+}
+
+.userinfo_box {
+    margin: 30rpx 5%;
+    background-color: #fff;
+    border-radius: 20rpx;
+    width: 90%;
+    position: absolute;
+    top: 15%;
+    text-align: center;
+    padding-bottom: 40rpx;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+}
+
+.userinfo_box .avatar {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    margin-top: -60rpx;
+    border: 8rpx solid #fff;
+}
+
+.userinfo_box .nickname {
+    font-size: 30rpx;
+    margin: 20rpx;
+}
+
+.num_box {
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.num_item {
+    width: 50%;
+    position: relative;
+}
+
+.num_item .num {
+    font-size: 34rpx;
+    font-weight: 700;
+    line-height: 50rpx;
+}
+
+.num_item .title {
+    font-size: 24rpx;
+    color: #b7b7b7;
+}
+
+.num_item:after {
+    width: 2rpx;
+    height: 50rpx;
+    background-color: #ebebeb;
+}
+
+.num_item:after,.num_item:last-child:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.num_item:last-child:after {
+    width: 1rpx;
+    height: 40rpx;
+    background-color: #fff;
+}
+
+.menu {
+    margin: 30rpx 5%;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07);
+}
+
+.menu,.menu .item {
+    border-radius: 20rpx;
+}
+
+.menu .item {
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.menu .item image {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}
+
+.menu .item .name {
+    font-size: 30rpx;
+    margin-left: 20rpx;
+    flex-grow: 1;
+}
+
+.cuIcon-right {
+    font-size: 36rpx;
+}

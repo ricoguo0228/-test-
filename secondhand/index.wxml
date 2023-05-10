@@ -1,0 +1,96 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">二手市场</view>
+</cu-custom>
+<view class="search_bg">
+    <view bindtap="toCate" class="search_box" data-id="9999">
+        <input disabled="true" placeholder="输入您要搜索的内容"></input>
+        <view class="search_icon">
+            <text class="cuIcon-titles" style="font-size:36rpx !important;color:#D2D2D2"></text>
+            <text class="cuIcon-search text-black"></text>
+        </view>
+    </view>
+</view>
+<view class="slide_box">
+    <swiper circular autoplay="{{autoplay}}" bindchange="index_swiperChange" class="swiper-box" duration="{{duration}}" nextMargin="55rpx" previousMargin="55rpx" wx:if="{{slide.length==0}}">
+        <swiper-item>
+            <image bindtap="previewImg" class="{{index_swiperCurrent==index?'on slide-image':' slide-image'}}" data-index="{{index}}" lazyLoad="true" src="/images/banners.jpg"></image>
+        </swiper-item>
+    </swiper>
+    <block wx:else>
+        <swiper circular autoplay="{{autoplay}}" bindchange="index_swiperChange" class="swiper-box" duration="{{duration}}" nextMargin="55rpx" previousMargin="55rpx">
+            <swiper-item wx:for="{{slide}}" wx:key="index">
+                <image bindtap="slideJump" class="{{index_swiperCurrent==index?'on slide-image':' slide-image'}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="true" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                <image bindtap="previewImg" class="{{index_swiperCurrent==index?'on slide-image':' slide-image'}}" data-index="{{index}}" lazyLoad="true" src="/images/banners.jpg" wx:else></image>
+            </swiper-item>
+        </swiper>
+        <view class="indicator-dots">
+            <view class="{{index_swiperCurrent==index?'dots_on':''}}" wx:for="{{slide}}" wx:key="index"></view>
+        </view>
+    </block>
+</view>
+<view class="cate_box">
+    <view bindtap="toCate" class="cate_item" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{index<3}}" wx:for="{{cateList}}" wx:key="index">
+        <image src="{{item.img}}"></image>
+        <view class="name">{{item.name}}</view>
+    </view>
+    <view bindtap="toCate" class="cate_item" data-id="9999">
+        <image src="/images/other.png"></image>
+        <view class="name">其他物品</view>
+    </view>
+</view>
+<view class="my_box">
+    <h2>闲置换钱</h2>
+    <view class="my_line">
+        <view bindtap="publish" class="my_item">
+            <view class="left">
+                <view class="fabu">一键发布</view>
+                <view class="desc">闲置物品快速变现</view>
+                <view class="fabu_btn">我要发布</view>
+            </view>
+            <image src="/images/fabu.png"></image>
+        </view>
+        <view bindtap="my" class="my_item">
+            <view class="left">
+                <view class="fabu">我的宝贝</view>
+                <view class="desc">省到就是赚到</view>
+                <view class="fabu_btn green">立即查看</view>
+            </view>
+            <image src="/images/my_publish.png"></image>
+        </view>
+    </view>
+</view>
+<block wx:if="{{sys.second_adv}}">
+    <view wx:if="{{sys.second_adv_type==0}}">
+        <ad unitId="{{sys.second_adv}}"></ad>
+    </view>
+    <view wx:else>
+        <ad adTheme="white" adType="video" unitId="{{sys.second_adv}}"></ad>
+    </view>
+</block>
+<view class="newest">
+    <h2>最新上架</h2>
+    <view class="goods_line">
+        <view bindtap="toDetail" class="goods_item" data-id="{{item.id}}" wx:if="{{index<10}}" wx:for="{{goodsList}}" wx:key="index">
+            <image mode="aspectFill" src="{{item.img[0]}}"></image>
+            <view class="name">{{item.name}}</view>
+            <view class="price">
+                <view class="price_item">￥{{item.price}}</view>
+                <view class="">￥{{item.oldprice}}</view>
+            </view>
+            <view class="userInfo">
+                <view class="left">
+                    <image class="avatar" src="{{item.avatar}}"></image>
+                    <view class="nickname">{{item.nickname}}</view>
+                </view>
+                <view>
+                    <text class="cuIcon-likefill text-orange"></text>
+            {{item.fav_count}}人喜欢
+          </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nocontent" wx:if="{{goodsList.length==0}}">
+    <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+    <view class="blank_text">暂无数据哦~</view>
+</view>

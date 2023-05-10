@@ -1,0 +1,35 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我卖出的</view>
+</cu-custom>
+<view class="trade_box">
+    <view class="single-trade" wx:for="{{dataList}}" wx:for-item="good" wx:key="id">
+        <view bindtap="toDetail" class="trade2" data-id="{{good.id}}" data-status="{{good.status}}">
+            <image class="bookimage" mode="aspectFill" src="{{good.img[0]}}"></image>
+            <view class="second-left">
+                <view class="textdet">
+                    <view class="text-bookname">{{good.name}}</view>
+                </view>
+                <view class="price">￥{{good.price}}</view>
+            </view>
+        </view>
+        <view class="margin" wx:if="{{good.status==3}}">申请退款理由：{{good.reason}}</view>
+        <view class="trade3">
+            <view class="margin-tb-sm-my text-center">
+                <view class="sm button" wx:if="{{good.status==1}}">待完成</view>
+                <view class="sm button" wx:if="{{good.status==2}}">已完成</view>
+                <view class="flex" wx:if="{{good.status==3}}">
+                    <view bindtap="agree" class="sm button refund" data-id="{{good.id}}" data-type="1">同意退款</view>
+                    <view bindtap="agree" class="sm button refund" data-id="{{good.id}}" data-type="2">拒绝退款</view>
+                </view>
+                <view class="sm button" data-id="{{good.id}}" data-status="{{good.status}}" wx:if="{{good.status==4}}">退款完成</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nocontent" wx:if="{{dataList.length==0}}">
+    <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+    <view class="blank_text">暂无数据哦~</view>
+</view>
+<view class="nomore" wx:if="{{!loadmore&&dataList.length>0}}">
+  没有更多数据了~
+</view>

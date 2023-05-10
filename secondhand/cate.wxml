@@ -1,0 +1,43 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">分类列表</view>
+</cu-custom>
+<view class="search_bg">
+    <view class="search_box">
+        <input bindinput="inputVal" placeholder="输入您要搜索的内容"></input>
+        <view class="search_icon">
+            <text class="cuIcon-titles" style="font-size:36rpx !important;color:#D2D2D2"></text>
+            <text bindtap="search" class="cuIcon-search text-black"></text>
+        </view>
+    </view>
+</view>
+<view class="cate_box">
+    <view bindtap="changeTab" class="cate_item {{current_cate==9999?'cate_active':''}}" data-id="9999" data-index="9999">
+    全部
+  </view>
+    <view bindtap="changeTab" class="cate_item {{current_cate==item.id?'cate_active':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{cateList}}" wx:key="index">
+      {{item.name}}
+    </view>
+</view>
+<view class="goods_line">
+    <view bindtap="toDetail" class="goods_item" data-id="{{item.id}}" wx:for="{{goodsList}}" wx:key="index">
+        <image mode="aspectFill" src="{{item.img[0]}}"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="price">
+            <view class="price_item">￥{{item.price}}</view>
+            <view class="">￥{{item.oldprice}}</view>
+        </view>
+        <view class="userInfo">
+            <view class="left">
+                <image class="avatar" src="{{item.avatar}}"></image>
+                <view class="nickname">{{item.nickname}}</view>
+            </view>
+            <view>
+                <text class="cuIcon-likefill text-orange"></text>
+          {{item.fav_count}}人喜欢
+        </view>
+        </view>
+    </view>
+</view>
+<view class="nomore" wx:if="{{!loadmore}}">
+  暂无更多数据~
+</view>

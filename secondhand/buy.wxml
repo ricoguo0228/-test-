@@ -1,0 +1,27 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">下单</view>
+</cu-custom>
+<form catchsubmit="formSubmit">
+    <view class="padding">
+        <view class="detail_box flex">
+            <image class="img" src="{{data.img[0]}}"></image>
+            <view>{{data.name}}</view>
+        </view>
+        <view class="info_box margin-top-lg">
+            <view class="info_item">
+                <view class="item_title">手机号</view>
+                <input name="phone" placeholder="请输入手机号"></input>
+            </view>
+            <view class="info_item">
+                <view class="item_title">联系人</view>
+                <input name="linkman" placeholder="请输入联系人姓名"></input>
+            </view>
+            <textarea name="remark" placeholder="请输入交易地点等其他信息"></textarea>
+        </view>
+    </view>
+    <view class="bottom flex">
+        <view class="text-df">价格：<text class="text-red text-xl text-bold">￥{{data.price}}</text>
+        </view>
+        <button class="sure" formType="submit">确认购买</button>
+    </view>
+</form>

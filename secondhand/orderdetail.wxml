@@ -1,0 +1,31 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">订单详情</view>
+</cu-custom>
+<view class="">
+    <view class="detail_box flex padding-lg" style="padding-bottom:0;">
+        <image class="img" src="{{data.img[0]}}"></image>
+        <view class="justify-between flex" style="flex-direction:column;">
+            <view>{{data.name}}</view>
+        </view>
+    </view>
+    <view class="padding-lg padding-top padding-bottom">
+        <view class="flex justify-between margin-top" style="border-top:1rpx solid #F2F2F2">
+            <view class="text-df margin-top-sm">订单总价：</view>
+            <view class="text-df margin-top text-lg text-bold text-red">￥{{data.price}}</view>
+        </view>
+        <view class="flex justify-between">
+            <view class="text-df margin-top-sm">订单状态：</view>
+            <view class="text-df margin-top text-lg text-bold text-red">{{data.status==1?'待完成':'已完成'}}</view>
+        </view>
+    </view>
+    <view style="background:#F2F2F2;height:30rpx;width:100%"></view>
+    <view class="padding-lg padding-top-sm">
+        <view class="text-lg text-bold margin-top">订单信息</view>
+        <view class="text-df margin-top-sm">订单总价：{{data.price}}</view>
+        <view class="text-df margin-top-sm">下单时间：{{data.addtime}}</view>
+        <view class="text-df margin-top-sm">联系人姓名：{{data.linkman}}</view>
+        <view bindtap="makecall" class="text-df margin-top-sm">联系人电话：<text class="text-red">{{data.phone}}</text>
+        </view>
+        <view class="text-df margin-top-sm">备注：{{data.remark}}</view>
+    </view>
+</view>

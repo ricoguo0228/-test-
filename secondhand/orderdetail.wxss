@@ -1,0 +1,23 @@
+page {
+    background-color: #fff;
+}
+
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.img {
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+
+.detail_box,.img {
+    border-radius: 20rpx;
+}
+
+.detail_box {
+    background-color: #fff;
+}

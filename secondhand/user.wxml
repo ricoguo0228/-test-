@@ -1,0 +1,35 @@
+<image mode="widthFix" src="/images/mygoods_bg.png" style="width:100%;"></image>
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我的宝贝</view>
+</cu-custom>
+<view class="userinfo_box">
+    <image class="avatar" src="{{loginuserinfo.avatarUrl}}"></image>
+    <view class="nickname">{{loginuserinfo.nickName}}</view>
+    <view class="num_box">
+        <view bindtap="jump" class="num_item" data-url="/gc_school/pages/secondfav/index">
+            <view class="num">{{data.fav_count}}</view>
+            <view class="title">收藏</view>
+        </view>
+        <view bindtap="jump" class="num_item" data-url="/gc_school/pages/secondhand/footprint">
+            <view class="num">{{data.footprint_count}}</view>
+            <view class="title">足迹</view>
+        </view>
+    </view>
+</view>
+<view class="menu">
+    <view bindtap="jump" class="item" data-url="/gc_school/pages/secondhand/my">
+        <image src="/images/user/fabu.png"></image>
+        <view class="name">我的发布</view>
+        <text class="cuIcon-right text-black"></text>
+    </view>
+    <view bindtap="jump" class="item" data-url="/gc_school/pages/secondhand/sale">
+        <image src="/images/user/sale.png"></image>
+        <view class="name">我卖出的</view>
+        <text class="cuIcon-right text-black"></text>
+    </view>
+    <view bindtap="jump" class="item" data-url="/gc_school/pages/secondhand/mybuy">
+        <image src="/images/user/buy.png"></image>
+        <view class="name">我买的宝贝</view>
+        <text class="cuIcon-right text-black"></text>
+    </view>
+</view>
