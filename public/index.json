@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "发布",
+    "usingComponents": {
+        "addImage": "/colorui/components/upload/upload",
+        "cu-custom": "/colorui/components/cu-custom"
+    }
+}
