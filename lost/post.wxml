@@ -1,0 +1,57 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">发布</view>
+</cu-custom>
+<form catchreset="formReset" catchsubmit="formSubmit">
+    <view class="padding">
+        <view class="flex justify-between">
+            <view>
+                <text class="text-red">*</text>所属分类</view>
+            <picker bindchange="bindPickerChange" range="{{cateList}}" value="{{cate}}">
+        {{cateList[cate]}}
+        <text class="cuIcon-right"></text>
+            </picker>
+        </view>
+        <view class="input_item flex margin-top">
+            <view class="item_name">
+                <text class="text-red">*</text>丢失/拾取物品</view>
+            <input bindinput="goods" maxlength="40" name="goods" placeholder="请输入丢失/拾取的物品" value="{{goods}}"></input>
+        </view>
+        <view class="input_item flex margin-top">
+            <view class="item_name">
+                <text class="text-red">*</text>丢失/拾取地点</view>
+            <input maxlength="40" name="place" placeholder="请输入丢失/拾取地点"></input>
+        </view>
+        <view class="input_item flex justify-between">
+            <view class="item_name">丢失/拾取时间</view>
+            <input maxlength="40" name="date" placeholder="请输入丢失/拾取时间"></input>
+        </view>
+        <view class="input_item flex">
+            <view class="item_name">手机号</view>
+            <input name="phone" placeholder="请输入联系人手机号" type="number"></input>
+        </view>
+        <view class="input_item flex">
+            <view class="item_name">认领方式</view>
+            <input name="method" placeholder="失物招领可填写在哪里认领" type=""></input>
+        </view>
+        <textarea class=" margin-top" name="remark" placeholder="请输入备注"></textarea>
+        <view class="margin-top margin-bottom">上传图片/视频</view>
+        <view>
+            <view wx:if="{{type=='video'}}">
+                <image bindtap="choose" class="add" src="/images/article/add.png" wx:if="{{video==''}}"></image>
+                <view class="preview" wx:else>
+                    <video class="add margin-right" src="{{video}}"></video>
+                    <text bindtap="delvideo" class="cuIcon-close close"></text>
+                </view>
+            </view>
+            <view class="flex" wx:elif="{{type=='image'}}">
+                <view class="preview" wx:for="{{picList}}">
+                    <image class="add margin-right" src="{{item}}"></image>
+                    <text bindtap="delimg" class="cuIcon-close close" data-index="{{index}}"></text>
+                </view>
+                <image bindtap="choose" class="add" src="/images/article/add.png" wx:if="{{picList.length<3}}"></image>
+            </view>
+            <image bindtap="choose" class="add" src="/images/article/add.png" wx:else></image>
+        </view>
+        <button class="btns" formType="submit" type="primary">发布</button>
+    </view>
+</form>

@@ -1,0 +1,139 @@
+page {
+    background: #fff;
+}
+
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.article_box .avatar {
+    width: 85rpx;
+    height: 85rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.article_box .nickname {
+    font-size: 28rpx;
+    font-weight: 700;
+}
+
+.article_box .date {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.icon_item image {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.icon_item text {
+    margin-left: 10rpx;
+    color: #999;
+}
+
+.item_img {
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 20rpx;
+}
+
+.comment_box {
+    margin-top: 10px;
+    background: #fff;
+    margin-bottom: 150rpx;
+}
+
+.comment_box .name {
+    padding: 20rpx 30rpx 0;
+}
+
+.comment_item_first {
+    border-top: 1px solid hsla(0,0%,78.8%,.6);
+    padding: 20rpx 30rpx;
+}
+
+.comment_item_first image {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.content {
+    font-size: 26rpx;
+}
+
+.content,.time {
+    margin-left: 70rpx;
+}
+
+.time {
+    color: #b7b7b7;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+
+.comment_item_child {
+    margin-left: 80rpx;
+    border-top: 1px solid hsla(0,0%,78.8%,.6);
+    padding: 20rpx 30rpx 20rpx 0;
+}
+
+.comment_item_child image {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.comment_input {
+    height: 120rpx;
+    position: fixed;
+    left: 0rpx;
+    bottom: 0rpx;
+    background-color: #fff;
+    z-index: 99;
+    width: 100%;
+    padding: 20rpx;
+    border-top: 1rpx solid #eee;
+    display: flex;
+}
+
+.comment_input input {
+    background-color: #f2f2f2;
+    width: 85%;
+    height: 80rpx;
+    border-radius: 10rpx;
+    padding-left: 10rpx;
+    font-size: 30rpx;
+}
+
+.comment_input .submit {
+    padding: 20rpx;
+    background-color: #f66;
+    color: #fff;
+    margin-left: 20rpx;
+    flex-shrink: 0;
+    border-radius: 10rpx;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+}
+
+.more {
+    text-align: center;
+    margin-bottom: 10rpx;
+}
+
+.item,.more {
+    font-size: 28rpx;
+}
+
+.item {
+    line-height: 50rpx;
+}

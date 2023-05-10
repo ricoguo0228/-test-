@@ -1,0 +1,59 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">失物招领</view>
+</cu-custom>
+<view class="slide_box padding-left padding-right" wx:if="{{slideList.length>0}}">
+    <swiper circular autoplay="{{autoplay}}" bindchange="index_swiperChange" class="swiper-box" duration="{{duration}}">
+        <swiper-item wx:for="{{slideList}}" wx:key="index">
+            <image bindtap="slideJump" class="{{index_swiperCurrent==index?'on slide-image':' slide-image'}}" data-index="{{index}}" data-type="{{item.url_type}}" data-url="{{item.url}}" lazyLoad="true" src="{{item.img}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="indicator-dots">
+        <view class="{{index_swiperCurrent==index?'dots_on':''}}" wx:for="{{slideList}}" wx:key="index"></view>
+    </view>
+</view>
+<view class="padding">
+    <view bindtap="jump" class="search_box" data-url="/gc_school/pages/lost/search">
+        <text class="cuIcon-search"></text>搜索
+    </view>
+    <view class="cate_item_box flex justify-around">
+        <view bindtap="cateChange" class="cate_item {{cate_index==index?'cate_active':''}}" data-index="{{index}}" wx:for="{{cateList}}">{{item.name}}</view>
+    </view>
+    <view class="padding-bottom" style="padding-bottom:100rpx">
+        <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+        <block wx:else>
+            <view bindtap="toDetail" class="article_box padding" data-id="{{item.id}}" wx:for="{{dataList}}">
+                <view class="flex">
+                    <image class="avatar" src="{{item.avatar?item.avatar:'/images/code/c17.png'}}"></image>
+                    <view class="">
+                        <view class="nickname">{{item.nickname}}</view>
+                        <view class="date">{{item.time}}</view>
+                    </view>
+                </view>
+                <view class="item" wx:if="{{item.cate==1}}">拾物地点：{{item.place}}</view>
+                <view class="item" wx:if="{{item.cate==2}}">丢失地点：{{item.place}}</view>
+                <view class="item">物品：{{item.goods}}</view>
+                <view class="item" wx:if="{{item.dates}}">时间：{{item.dates}}</view>
+                <view class="item" wx:if="{{item.phone}}">联系人手机号：{{item.phone}}</view>
+                <view class="item" wx:if="{{item.method&&item.cate==1}}">认领方式：{{item.method}}</view>
+                <view class="content item" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+                <view class="margin-top" wx:if="{{item.media_type=='video'}}">
+                    <video catchtap="play" src="{{item.video}}" style="width:100%;"></video>
+                </view>
+                <view class="margin-top" wx:elif="{{item.media_type=='image'}}">
+                    <image catchtap="preview" class="item_img" data-img="{{img}}" data-list="{{item.img}}" mode="aspectFill" src="{{img}}" wx:for="{{item.img}}" wx:for-item="img"></image>
+                </view>
+                <view class="flex justify-between margin-top">
+                    <view></view>
+                    <view class="flex icon_item">
+                        <text>查看详情>>></text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <image bindtap="jump" class="post_img" data-url="/gc_school/pages/lost/my" src="/images/article/my.png"></image>
+    <view bindtap="jump" class="publish publish_item text-center" data-url="/gc_school/pages/lost/post">
+        <image src="/images/article/fabu.png"></image>
+        <view class="text-white text-df">一键发布</view>
+    </view>
+</view>

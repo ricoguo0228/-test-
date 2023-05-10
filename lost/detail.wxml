@@ -1,0 +1,71 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">详情</view>
+</cu-custom>
+<view class="padding">
+    <view class="flex article_box">
+        <image class="avatar" src="{{detail.avatar?detail.avatar:'/images/code/c17.png'}}"></image>
+        <view class="">
+            <view class="nickname">{{detail.nickname}}</view>
+            <view class="date">{{detail.time}}</view>
+        </view>
+    </view>
+    <view class="item" wx:if="{{detail.cate==1}}">拾物地点：{{detail.place}}</view>
+    <view class="item" wx:if="{{detail.cate==2}}">丢失地点：{{detail.place}}</view>
+    <view class="item">物品：{{detail.goods}}</view>
+    <view class="item" wx:if="{{detail.dates}}">时间：{{detail.dates}}</view>
+    <view bindtap="makecall" class="item" wx:if="{{detail.phone}}">联系人手机号：<text class="text-green">{{detail.phone}}</text>
+    </view>
+    <view class="item" wx:if="{{detail.method&&detail.cate==1}}">认领方式：{{detail.method}}</view>
+    <view class="item" wx:if="{{detail.remark}}">备注：{{detail.remark}}</view>
+    <view class="margin-top" wx:if="{{detail.media_type=='video'}}">
+        <video src="{{detail.video}}" style="width:100%;"></video>
+    </view>
+    <view class="margin-top" wx:elif="{{detail.media_type=='image'}}">
+        <image bindtap="preview" class="item_img" data-img="{{img}}" data-list="{{detail.img}}" mode="aspectFill" src="{{img}}" wx:for="{{detail.img}}" wx:for-item="img"></image>
+    </view>
+    <view class="comment_box">
+        <view class="name margin-bottom" style="padding-left:0;">全部留言</view>
+        <block wx:for="{{comment_list}}" wx:key="index">
+            <view class="comment_item_first">
+                <view class="top">
+                    <image src="{{item.nickimg}}"></image>
+                    <view class="nickname" style="flex-grow:2;">{{item.nickname}}</view>
+                    <text bindtap="del" class="cuIcon-delete" data-id="{{item.id}}" wx:if="{{detail.user.u_id==item.uid}}"></text>
+                </view>
+                <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="-1">{{item.content}}</view>
+                <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="-1">{{item.time}}</view>
+            </view>
+            <view class="comment_item_child" wx:if="{{index1<1}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child">
+                <view class="top justify-between">
+                    <image src="{{child.nickimg}}"></image>
+                    <view class="nickname" style="flex-grow:2;">{{child.nickname}}</view>
+                    <text bindtap="del" class="cuIcon-delete" data-id="{{child.id}}" wx:if="{{detail.user.u_id==child.uid}}"></text>
+                </view>
+                <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+                <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="{{index1}}">{{child.time}}</view>
+            </view>
+            <view class="comment_item_child" wx:if="{{index1>=1&&item.block==true}}" wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="child">
+                <view class="top justify-between">
+                    <image src="{{child.nickimg}}"></image>
+                    <view class="nickname" style="flex-grow:2;">{{child.nickname}}</view>
+                    <text bindtap="del" class="cuIcon-delete" data-id="{{child.id}}" wx:if="{{detail.user.u_id==child.uid}}"></text>
+                </view>
+                <view bindtap="comment" class="content" data-groupindex="{{index}}" data-index="{{index1}}">{{child.content}}</view>
+                <view bindtap="comment" class="time" data-groupindex="{{index}}" data-index="{{index1}}">{{child.time}}</view>
+            </view>
+            <view bindtap="showmore" class="more" data-index="{{index}}" wx:if="{{item.child.length>1&&item.block==false}}">展开<text class="cuIcon-unfold"></text>
+            </view>
+            <view bindtap="showmore" class="more" data-index="{{index}}" wx:elif="{{item.child.length>1&&item.block==true}}">收起<text class="cuIcon-fold"></text>
+            </view>
+            <view wx:else></view>
+        </block>
+        <view class="nocontent" wx:if="{{comment_list==0}}">
+            <image lazyLoad mode="aspectFit" src="/images/empty.png"></image>
+            <view class="blank_text">暂无留言哦~</view>
+        </view>
+    </view>
+    <view class="comment_input" style="bottom:{{bottom}}px">
+        <input adjustPosition="{{false}}" bindblur="inputBlur" bindfocus="inputFocus" bindinput="input" placeholder="{{placeholder}}" value="{{input}}"></input>
+        <view bindtap="submit" class="submit">发送</view>
+    </view>
+</view>

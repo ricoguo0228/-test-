@@ -1,0 +1,29 @@
+<cu-custom bgColor="bgmain" isBack="{{true}}">
+    <view slot="content">我的发布</view>
+</cu-custom>
+<view class="padding" style="padding-top:0">
+    <view class="padding-bottom">
+        <view class="text-center margin-top text-df" wx:if="{{dataList.length==0}}">暂无数据~</view>
+        <block wx:else>
+            <view bindtap="toDetail" class="article_box padding" data-id="{{item.id}}" wx:for="{{dataList}}">
+                <view class="item" wx:if="{{item.cate==1}}">拾物地点：{{item.place}}</view>
+                <view class="item" wx:if="{{item.cate==2}}">丢失地点：{{item.place}}</view>
+                <view class="item">物品：{{item.goods}}</view>
+                <view class="item" wx:if="{{item.dates}}">日期：{{item.dates}}</view>
+                <view class="item" wx:if="{{item.phone}}">联系人手机号：{{item.phone}}</view>
+                <view class="item" wx:if="{{item.method&&item.cate==1}}">认领方式：{{item.method}}</view>
+                <view class="content item" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+                <view class="margin-top" wx:if="{{item.media_type=='video'}}">
+                    <video src="{{item.video}}" style="width:100%;"></video>
+                </view>
+                <view class="margin-top" wx:elif="{{item.media_type=='image'}}">
+                    <image catchtap="preview" class="item_img" data-img="{{img}}" data-list="{{item.img}}" mode="aspectFill" src="{{img}}" wx:for="{{item.img}}" wx:for-item="img"></image>
+                </view>
+                <view class="margin-top-sm flex text-sm" style="line-height:40rpx;">
+                    <view class="">{{item.addtime}}</view>
+                    <view catchtap="del" class="text-orange margin-left" data-id="{{item.id}}">删除</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

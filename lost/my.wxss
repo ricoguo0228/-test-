@@ -1,0 +1,68 @@
+page {
+    background: #fff;
+}
+
+.bgmain {
+    background-color: #ff6444;
+    color: #fff;
+}
+
+.article_box {
+    margin-top: 40rpx;
+    box-shadow: 0 4px 20px 0 hsla(0,0%,60%,.1);
+    border-radius: 10rpx;
+}
+
+.article_box .avatar {
+    width: 75rpx;
+    height: 75rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.article_box .nickname {
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.article_box .date {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.icon_item image {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.icon_item text {
+    margin-left: 10rpx;
+    color: #999;
+}
+
+.btn {
+    background: #ff6344;
+    color: #fff;
+    width: 70%;
+    margin-left: 15%;
+    padding: 30rpx;
+    border-radius: 50rpx;
+    position: fixed;
+    bottom: 20rpx;
+}
+
+.post_img {
+    width: 100rpx;
+    height: 100rpx;
+    position: fixed;
+    right: 0;
+    bottom: 30%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.item_img {
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 20rpx;
+}
