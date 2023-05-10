@@ -1,0 +1,30 @@
+<scroll-view scrollY class="scrollPage">
+    <cu-custom bgColor="bgmain" isBack="{{true}}">
+        <view slot="content">提现</view>
+    </cu-custom>
+    <form bindsubmit="formSubmit">
+        <view class="padding padding-bottom-sm bg-white">
+            <view class="title text-grey text-lg">可提现金额 ￥{{userInfo.money}}</view>
+        </view>
+        <view class="cu-form-group ">
+            <input bindinput="moneyinput" name="money" placeholder="点此输入提现金额" type="digit" value="{{money}}"></input>
+        </view>
+        <view class="padding padding-bottom-sm bg-white margin-top" wx:if="{{is_pay==0}}">
+            <view class="title text-grey text-lg">提现方式</view>
+        </view>
+        <view class="cu-form-group" wx:if="{{is_pay==0}}">
+            <view class="title">姓名</view>
+            <input name="name" placeholder="输入姓名" value="{{form.name}}"></input>
+        </view>
+        <view class="cu-form-group" wx:if="{{is_pay==0}}">
+            <view class="title">{{sys.tixian_word?sys.tixian_word:'手机号'}}</view>
+            <input name="account" placeholder="请输入" value="{{form.account}}"></input>
+        </view>
+        <view class="submit margin-top">
+            <view class="padding flex flex-direction">
+                <button class="cu-btn bg-yellow lg round" formType="submit">提交申请</button>
+                <view class="notice" wx:if="{{is_pay==1}}">提现的钱将会到账微信余额，请注意查收</view>
+            </view>
+        </view>
+    </form>
+</scroll-view>

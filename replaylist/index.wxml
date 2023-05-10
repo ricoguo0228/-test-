@@ -1,0 +1,26 @@
+<cu-custom bgColor="bgmains" isBack="{{true}}">
+    <view slot="content">提现记录</view>
+</cu-custom>
+<view class="container">
+    <view class="grid  radius col-1">
+        <view class="radius">
+            <view class=" radius   light ">
+                <view class="cu-list menu">
+                    <view class="cu-item" wx:for="{{list}}" wx:key="{{index}}">
+                        <view class="content">
+                            <view>
+                                <text class="text-df">{{item.status}}</text>
+                            </view>
+                            <view>
+                                <text class="text-sm">{{item.time}}</text>
+                            </view>
+                        </view>
+                        <view class="action">
+                            <text class="text-grey text-xs">¥{{item.money}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

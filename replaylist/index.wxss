@@ -1,0 +1,7 @@
+.bgmains {
+    background-color: #ff6444;
+}
+
+.bgmains,.cuIcon-back {
+    color: #fff;
+}
