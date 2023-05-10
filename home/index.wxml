@@ -1,0 +1,199 @@
+<view class="container">
+    <view class="school" style="background-color:{{color}}">
+        <picker bindchange="PickerChange" range="{{school}}" rangeKey="s_name" value="{{index}}">
+            <view class="picker">
+                <text class="cuIcon-locationfill"></text>
+        {{school[index].s_name?school[index].s_name:'选择学校'}}
+        <text class="cuIcon-unfold"></text>
+            </view>
+        </picker>
+    </view>
+    <view class="flex-col container">
+        <view class="flex-col section_5">
+            <view class="flex-col group_4">
+                <swiper autoplay="true" current="{{current}}" style="height:180px;padding:0 20rpx;">
+                    <block wx:if="{{schoolInfo.school.thums.length>0}}">
+                        <swiper-item wx:for="{{schoolInfo.school.thums}}" wx:key="index">
+                            <image bindtap="slideJump" data-type="{{item.url_type}}" data-url="{{item.url}}" mode="widthFix" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                            <image mode="widthFix" src="../../../images/banners.jpg" wx:else></image>
+                        </swiper-item>
+                    </block>
+                    <swiper-item wx:else>
+                        <image mode="widthFix" src="../../../images/banners.jpg"></image>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="flex-row equal-division menu">
+                <block wx:if="{{schoolInfo.modules.length==0}}">
+                    <view bindtap="onJsEvent" class="equal-division-item_1 flex-col items-center" data-type="1" data-url="">
+                        <image class="image_6" src="../../../images/home/qu_icon.png"></image>
+                        <text class="text_4" decode="decode">取快递</text>
+                    </view>
+                    <view bindtap="onJsEvent" class="equal-division-item_1 flex-col items-center" data-type="2" data-url="">
+                        <image class="image_6" src="../../../images/home/ji_icon.png"></image>
+                        <text class="text_4" decode="decode">寄快递</text>
+                    </view>
+                    <view bindtap="onJsEvent" class="equal-division-item_1 flex-col items-center" data-type="3" data-url="">
+                        <image class="image_6" src="../../../images/home/shi_icon.png"></image>
+                        <text class="text_4" decode="decode">食堂超市</text>
+                    </view>
+                    <view bindtap="onJsEvent" class="equal-division-item_1 flex-col items-center" data-type="4" data-url="">
+                        <image class="image_6" src="../../../images/home/wan_icon.png"></image>
+                        <text class="text_4" decode="decode">万能任务</text>
+                    </view>
+                </block>
+                <block wx:else>
+                    <block wx:for="{{schoolInfo.modules}}" wx:key="index">
+                        <view bindtap="onJsEvent" class="equal-division-item_1 flex-col items-center" data-id="{{item.id}}" data-type="{{index+1}}" data-url="{{item.param}}" data-urltype="{{item.url_type}}" wx:if="{{item.url_type!=2}}">
+                            <image class="image_6" src="{{item.img==''?'../../../images/home/wan_icon.png':item.img}}"></image>
+                            <text class="text_4" decode="decode">{{item.name}}</text>
+                        </view>
+                        <view bindtap="toOther" class="equal-division-item_1 flex-col items-center" data-appid="{{item.param}}" wx:else>
+                            <image class="image_6" src="{{item.img==''?'../../../images/home/wan_icon.png':item.img}}"></image>
+                            <text class="text_4" decode="decode">{{item.name}}</text>
+                        </view>
+                    </block>
+                </block>
+            </view>
+            <block wx:if="{{sysparment.is_modules_show==1}}">
+                <view class="flex-row equal-division_1 justify-between" wx:if="{{sysparment.is_luntan_show==1}}">
+                    <view bindtap="jump" class="flex-col" data-url="/gc_school/pages/secondhand/index">
+                        <image class="item_img" mode="widthFix" src="../../../images/home/shichang.png"></image>
+                    </view>
+                    <view bindtap="jump" class="flex-col" data-url="/gc_school/pages/lost/index">
+                        <image class="item_img" mode="widthFix" src="../../../images/home/zhaoling.png"></image>
+                    </view>
+                    <view bindtap="jump" class="flex-col" data-url="/gc_school/pages/article/index">
+                        <image class="item_img" mode="widthFix" src="../../../images/home/quanzi.png"></image>
+                    </view>
+                </view>
+                <view class="flex-row equal-division_1 justify-between" wx:else>
+                    <view bindtap="jump" class="flex-col" data-url="/gc_school/pages/secondhand/index">
+                        <image class="item_imgs" mode="widthFix" src="https://gcwe7.link1024.com/web/img/second.png"></image>
+                    </view>
+                    <view bindtap="jump" class="flex-col" data-url="/gc_school/pages/lost/index">
+                        <image class="item_imgs" mode="widthFix" src="https://gcwe7.link1024.com/web/img/lost.png"></image>
+                    </view>
+                </view>
+            </block>
+            <view class="flex-col group_8" wx:if="{{sysparment.is_rank_show==1&&schoolInfo.rank.length>0}}">
+                <view bindtap="jump" class="justify-between group_9" data-url="/gc_school/pages/rank/index">
+                    <view class="flex-col group_10">
+                        <text class="text_11 text_12" decode="decode">Ranking</text>
+                        <text class="text_13" decode="decode">排行榜</text>
+                    </view>
+                    <text class="cuIcon-right icon_1 image_13 margin-right-sm"></text>
+                </view>
+                <view class="flex-col group_11">
+                    <view class="flex-row">
+                        <view class="flex-col equal-division-item_4 rank_item 11" wx:if="{{schoolInfo.rank.length>1}}">
+                            <text class="text_14 nickname" decode="decode">{{schoolInfo.rank[1]['username']}}</text>
+                            <view class="center-text-wrapper flex-col items-center view">
+                                <text decode="decode">No.2</text>
+                            </view>
+                            <view class="justify-center group_12">
+                                <text class="text_16" decode="decode">总赚</text>
+                                <text class="text_17" decode="decode">{{schoolInfo.rank[1]['money']}}</text>
+                            </view>
+                        </view>
+                        <view class="flex-col rank_item" wx:else></view>
+                        <view class="flex-col equal-division-item_5 rank_item 22" wx:if="{{schoolInfo.rank.length>0}}">
+                            <view class="flex-col group_13">
+                                <text class="text_18 nickname" decode="decode">{{schoolInfo.rank[0]['username']}}</text>
+                                <view class="flex-col items-center text-wrapper">
+                                    <text decode="decode">No.1</text>
+                                </view>
+                            </view>
+                            <view class="justify-center group_14">
+                                <text class="text_20" decode="decode">总赚</text>
+                                <text class="text_21" decode="decode">{{schoolInfo.rank[0]['money']}}</text>
+                            </view>
+                        </view>
+                        <view class="flex-col rank_item" wx:else></view>
+                        <view class="flex-col equal-division-item_6 rank_item 33" wx:if="{{schoolInfo.rank.length>2}}">
+                            <text class="text_22 nickname" decode="decode">{{schoolInfo.rank[2]['username']}}</text>
+                            <view class="center-text-wrapper flex-col items-center view_1">
+                                <text decode="decode">No.3</text>
+                            </view>
+                            <view class="justify-between group_15">
+                                <text class="text_24" decode="decode">总赚</text>
+                                <text class="text_25" decode="decode">{{schoolInfo.rank[2]['money']}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <image class="image_14" src="{{schoolInfo.rank[1]['pic']}}"></image>
+                    <image class="image_15" src="{{schoolInfo.rank[0]['pic']}}"></image>
+                    <image class="image_16" src="{{schoolInfo.rank[2]['pic']}}"></image>
+                </view>
+            </view>
+            <view class="flex-col group_16">
+                <view class="group_17 flex">
+                    <view bindtap="order_change" class="flex-col group_18" data-index="0">
+                        <text class="text_11" decode="decode">new</text>
+                        <text class="text_27 {{order_index==0?'text-orange':''}}" decode="decode">最新订单</text>
+                    </view>
+                    <text class="cuIcon-titles text-orange margin"></text>
+                    <view bindtap="order_change" class="flex-col group_18" data-index="1" wx:if="{{sysparment.is_history_show==1}}">
+                        <text class="text_11" decode="decode">history</text>
+                        <text class="text_27 {{order_index==1?'text-orange':''}}" decode="decode">历史订单</text>
+                    </view>
+                </view>
+                <view class="flex-col list">
+                    <block wx:for="{{order_index==0?list:history}}" wx:key="*this">
+                        <view bindtap="detail" class="list-item justify-between" data-index="{{index}}" data-status="{{item.status}}">
+                            <view class="flex-row">
+                                <view class="left-text-wrapper flex-col items-center">
+                                    <image class="icon_item" src="../../../images/home/ji.png" wx:if="{{item.type=='寄件'}}"></image>
+                                    <image class="icon_item" src="../../../images/home/qu.png" wx:elif="{{item.type=='取件'}}"></image>
+                                    <image class="icon_item" src="../../../images/home/shi.png" wx:elif="{{item.type=='超市食堂'}}"></image>
+                                    <image class="icon_item" src="../../../images/home/wan.png" wx:else></image>
+                                </view>
+                                <view class="right-group flex-col">
+                                    <text class="text_30 text-cut" decode="decode" wx:if="{{item.type=='无所不能/饮品'&&item.title}}">{{item.title}}</text>
+                                    <text class="text_30 text-cut" decode="decode" wx:else>{{item.desc}}</text>
+                                    <view class="bottom-group flex-row">
+                                        <block wx:if="{{item.type=='无所不能/饮品'}}">
+                                            <view class="left-text-wrapper_1 flex-col" wx:if="{{item.is_start_show==1}}">
+                                                <text class="text_32" decode="decode">服务时间：{{item.start_time}}</text>
+                                            </view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class="left-text-wrapper_1 flex-col" wx:if="{{item.type!='无所不能/饮品'}}">
+                                                <text class="text_32" decode="decode">送达时间：{{item.start_time}}</text>
+                                            </view>
+                                        </block>
+                                        <view class="right-text-wrapper flex-col">
+                                            <text class="text_34" decode="decode">{{item.sex_limit}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="right-group_1">
+                                <text class="text_36" decode="decode">￥</text>
+                                <text class="text_38" decode="decode">{{item.total}}</text>
+                            </view>
+                        </view>
+                        <view class="divider" wx:if="{{index!==3}}"></view>
+                    </block>
+                    <view class="text-center text-df margin-top" wx:if="{{list.length>=10}}">更多订单请前往抢单中心查看</view>
+                    <view class="text-center text-df margin-top" wx:if="{{list.length==0}}">暂无新订单~</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<import src="/wxParse/wxParse.wxml"></import>
+<view class="cover" wx:if="{{is_show_toast&&sysparment.is_show_toast==1}}">
+    <view class="toast">
+        <template is="wxParse" data="{{wxParseData:toast_content.nodes}}"></template>
+    </view>
+    <view bindtap="close" class="sure">我知道了</view>
+</view>
+<block wx:if="{{sysparment.home_adv}}">
+    <view wx:if="{{sysparment.home_adv_type==0}}">
+        <ad unitId="{{sysparment.home_adv}}"></ad>
+    </view>
+    <view wx:else>
+        <ad adTheme="white" adType="video" unitId="{{sysparment.home_adv}}"></ad>
+    </view>
+</block>
