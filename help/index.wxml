@@ -1,0 +1,7 @@
+<cu-custom bgColor="bgmains" isBack="{{true}}">
+    <view slot="content">帮助中心</view>
+</cu-custom>
+<import src="/wxParse/wxParse.wxml"></import>
+<view class="box">
+    <template is="wxParse" data="{{wxParseData:guide.nodes}}"></template>
+</view>

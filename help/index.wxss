@@ -1,0 +1,15 @@
+page {
+    background-color: #fff;
+}
+
+.bgmains {
+    background-color: #ff6444;
+}
+
+.bgmains,.cuIcon-back {
+    color: #fff;
+}
+
+.box {
+    padding: 20rpx 30rpx;
+}
